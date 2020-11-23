@@ -1,0 +1,7 @@
+<template>
+    <div class="slds-scope slds-box slds-theme_default">
+        <img if:false={isTom} src="https://upload.wikimedia.org/wikipedia/en/f/f6/Tom_Tom_and_Jerry.png" alt="This is Tom" class="imageTom" width="250px" height= "200px"/>
+        <img if:true={isTom} src="https://upload.wikimedia.org/wikipedia/en/2/2f/Jerry_Mouse.png" alt="This is Jerry" class="imageJerry" width="250px" height= "200px"/>
+        <lightning-button label={labelName} onclick={Click} variant="brand"></lightning-button>
+    </div>
+  </template>
