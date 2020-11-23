@@ -1,0 +1,20 @@
+<template>
+    <div>Calc Expression</div>
+    <div class="slds-text-heading_medium">{calcExpression}</div>
+    <div>Result</div>
+    <div class="slds-text-heading_large">{result}</div>
+    <div>
+        <template for:each={numbers} for:item="number" for:index="idx">
+            <button if:false={number.linebreak} class="slds-button slds-button_neutral" value={number.num} key={number.num} onclick={handleButtonClick}>{number.num}</button>
+            <button if:true={number.linebreak} class="slds-button slds-button_brand" value={number.num} key={number.num} onclick={handleButtonClick}>{number.num}</button>
+            <br if:true={number.linebreak} key={number.num}/>
+        </template>
+    </div>
+    <div>
+        <button class="slds-button slds-button_text-destructive" value="C" onclick={clear}>C</button>
+        <button class="slds-button slds-button_neutral" value="0" onclick={handleButtonClick}>0</button>
+        <button class="slds-button slds-button_success" value="=" onclick={calculateResults}>=</button>
+        <button class="slds-button slds-button_brand" value="/" onclick={buttonClick}>/</button>
+   
+    </div>
+</template>
