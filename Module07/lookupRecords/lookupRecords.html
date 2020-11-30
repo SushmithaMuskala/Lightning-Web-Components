@@ -1,0 +1,37 @@
+<template>
+    <template if:false={selectAcc}>
+        <lightning-card title="Search Account" icon-name="standard:account">
+            <lightning-input class="slds-p-left_large" type="search" placeholder="Enter Account Name..."
+                onchange={searchAccount}>
+            </lightning-input>
+            <template if:true={accounts.data}>
+                <template for:each={accounts.data} for:item="acc">
+                    <a href="#" key={acc.id} data-account-id={acc.Id} onclick={selectedAccount}>
+                        <lightning-card title={acc.Name} icon-name="standard:account">
+                            <p class="slds-list_horizontal slds-p-left_large">
+                                {acc.AccountNumber}*{acc.Industry}*{acc.Site}*{acc.AccountSource}*{acc.Phone}</p>
+                        </lightning-card>
+                    </a>
+                </template>
+            </template>
+        </lightning-card>
+    </template>
+    <template if:true={selectAcc}>
+        <lightning-card title="Selected Account" icon-name="standard:account">
+            <lightning-card title={name}>
+                <p class="slds-list_horizontal slds-p-left_medium">
+                    {accountNumber}*{industry}*{site}*{accountSource}*{phone}</p>
+            </lightning-card>
+            <div class="slds-border_bottom"></div>
+            <lightning-button class="slds-p-top_small slds-align_absolute-center" onclick={handleReset}
+                label="Reset Search" variant="brand">
+            </lightning-button>
+            <div class="slds-border_bottom slds-p-top_small "></div>
+            <lightning-card title="Associated Contacts" icon-name="standard:contact">
+                <lightning-datatable key-field="id" data={contacts} hide-checkbox-column columns={columns}>
+                </lightning-datatable>
+            </lightning-card>
+        </lightning-card>
+    </template>
+
+</template>
